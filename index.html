@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>APEX MOTORS | Premium Motorcycle Dealership</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #2c2c2c;
+            background-color: #ffffff;
+        }
+
+        .header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff3838;
+        }
+
+        .hero {
+            margin-top: 70px;
+            height: 90vh;
+            background: url('https://images.unsplash.com/photo-1558981359-219d6364c9c8?q=80&w=2070') center/cover;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding-left: 5rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #ff3838;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            border: none;
+            border-radius: 3px;
+        }
+
+        .button:hover {
+            background: #cc2c2c;
+            transform: translateY(-2px);
+        }
+
+        .featured-bikes {
+            padding: 6rem 0;
+            background: #f8f8f8;
+        }
+
+        .bikes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .bike-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .bike-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .bike-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .bike-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bike-info {
+            padding: 1.5rem;
+        }
+
+        .bike-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            color: #ff3838;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .services {
+            padding: 6rem 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 2rem;
+            background: #f8f8f8;
+            border-radius: 8px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .testimonials {
+            padding: 6rem 0;
+            background: url('https://images.unsplash.com/photo-1615172282427-9a57ef2d142e?q=80&w=2071') center/cover fixed;
+            color: white;
+            position: relative;
+        }
+
+        .testimonials::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .testimonials-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta {
+            padding: 6rem 0;
+            background: #2c2c2c;
+            color: white;
+            text-align: center;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-links h4 {
+            color: #ff3838;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav>
+                <div class="logo">APEX MOTORS</div>
+                <div class="nav-links">
+                    <a href="#new">New Bikes</a>
+                    <a href="#used">Used Bikes</a>
+                    <a href="#service">Service</a>
+                    <a href="#parts">Parts</a>
+                    <a href="#finance">Finance</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="container">
+                <h1>RIDE YOUR<br>DREAMS</h1>
+                <p style="margin-bottom: 2rem; font-size: 1.2rem;">Premium motorcycles for passionate riders</p>
+                <a href="#inventory" class="button">View Inventory</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-bikes">
+        <div class="container">
+            <h2 class="section-title">Featured Bikes</h2>
+            <div class="bikes-grid">
+                <div class="bike-card">
+                    <div class="bike-image">
+                        <img src="https://images.unsplash.com/photo-1519083994092-4b1d44b3d2c3?q=80&w=1935" alt="Sport Bike">
+                    </div>
+                    <div class="bike-info">
+                        <h3>Yamaha YZF R1</h3>
+                        <div class="specs">
+                            <div class="spec-item">
+                                <span>Engine:</span>
+                                <span>998cc</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Power:</span>
+                                <span>200 HP</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Mileage:</span>
+                                <span>2,450 mi</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Year:</span>
+                                <span>2023</span>
+                            </div>
+                        </div>
+                        <div class="price">$16,499</div>
+                        <a href="#details" class="button">View Details</a>
+                    </div>
+                </div>
+
+                <div class="bike-card">
+                    <div class="bike-image">
+                        <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=2070" alt="Adventure Bike">
+                    </div>
+                    <div class="bike-info">
+                        <h3>BMW R 1250 GS</h3>
+                        <div class="specs">
+                            <div class="spec-item">
+                                <span>Engine:</span>
+                                <span>1254cc</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Power:</span>
+                                <span>136 HP</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Mileage:</span>
+                                <span>1,200 mi</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Year:</span>
+                                <span>2024</span>
+                            </div>
+                        </div>
+                        <div class="price">$19,999</div>
+                        <a href="#details" class="button">View Details</a>
+                    </div>
+                </div>
+
+                <div class="bike-card">
+                    <div class="bike-image">
+                        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2070" alt="Cruiser">
+                    </div>
+                    <div class="bike-info">
+                        <h3>Harley-Davidson Street Glide</h3>
+                        <div class="specs">
+                            <div class="spec-item">
+                                <span>Engine:</span>
+                                <span>1868cc</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Power:</span>
+                                <span>93 HP</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Mileage:</span>
+                                <span>856 mi</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Year:</span>
+                                <span>2024</span>
+                            </div>
+                        </div>
+                        <div class="price">$22,999</div>
+                        <a href="#details" class="button">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Maintenance & Repairs</h3>
+                    <p>Factory-trained technicians using genuine parts</p>
+                </div>
+                <div class="service-card">
+                    <h3>Custom Modifications</h3>
+                    <p>Personalize your ride with premium upgrades</p>
+                </div>
+                <div class="service-card">
+                    <h3>Financing Options</h3>
+                    <p>Competitive rates and flexible terms</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="testimonials-content">
+            <div class="container">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <p style="font-size: 1.2rem; font-style: italic;">"Outstanding service and incredible selection of bikes. The team at Apex Motors made my dream of owning a Yamaha R1 come true!"</p>
+                    <p style="margin-top: 1rem;">- Michael R., Verified Customer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2 style="margin-bottom: 1rem;">Ready to Find Your Perfect Ride?</h2>
+            <p style="margin-bottom: 2rem;">Visit our showroom or schedule a test ride today</p>
+            <a href="#contact" class="button">Contact Us</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <p>123 Bike Street</p>
+                    <p>Los Angeles, CA 90001</p>
+                    <p>(555) 123-4567</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Hours</h4>
+                    <p>Mon-Fri: 9AM - 7PM</p>
+                    <p>Saturday: 9AM - 5PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#inventory">Inventory</a>
+                    <a href="#service">Service</a>
+                    <a href="#finance">Financing</a>
+                    <a href="#about">About Us</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Follow Us</h4>
+                    <a href="#facebook">Facebook</a>
+                    <a href="#instagram">Instagram</a>
+                    <a href="#youtube">YouTube</a>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <p>© 2024 APEX MOTORS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
